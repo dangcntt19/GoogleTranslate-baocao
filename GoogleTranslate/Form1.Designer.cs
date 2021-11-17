@@ -37,6 +37,7 @@ namespace GoogleTranslate
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -67,7 +68,7 @@ namespace GoogleTranslate
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 53);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Translate";
+            this.button1.Text = "Dịch";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -78,7 +79,7 @@ namespace GoogleTranslate
             this.label1.Location = new System.Drawing.Point(97, 65);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 32);
+            this.label1.Size = new System.Drawing.Size(113, 26);
             this.label1.TabIndex = 3;
             this.label1.Text = "Tiếng việt";
             // 
@@ -89,35 +90,46 @@ namespace GoogleTranslate
             this.label2.Location = new System.Drawing.Point(592, 65);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 32);
+            this.label2.Size = new System.Drawing.Size(118, 26);
             this.label2.TabIndex = 4;
             this.label2.Text = "Tiếng Anh";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(244, 9);
+            this.label3.Location = new System.Drawing.Point(242, 19);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(345, 33);
+            this.label3.Size = new System.Drawing.Size(335, 32);
             this.label3.TabIndex = 6;
             this.label3.Text = "GOOGLE TRANSLATE ";
             // 
             // label4
             // 
             this.label4.Image = global::GoogleTranslate.Properties.Resources.tải_xống_removebg_preview2;
-            this.label4.Location = new System.Drawing.Point(334, 102);
+            this.label4.Location = new System.Drawing.Point(328, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 127);
             this.label4.TabIndex = 7;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(14, 68);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Hoán đổi";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 384);
+            this.ClientSize = new System.Drawing.Size(816, 402);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -144,6 +156,7 @@ namespace GoogleTranslate
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button2;
     }
 }
 

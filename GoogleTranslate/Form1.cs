@@ -20,24 +20,27 @@ namespace GoogleTranslate
             InitializeComponent();
         }
 
+        private string input = "vi";
+        private string output = "en";
+
         public string TranslateText(string input)
-        {            
+        {
             string url = String.Format
             ("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
-             "vi", "en", Uri.EscapeUriString(input));
+             input, output, Uri.EscapeUriString(input));
             HttpClient httpClient = new HttpClient();
-            string result = httpClient.GetStringAsync(url).Result;            
-            var jsonData = new JavaScriptSerializer().Deserialize<List<dynamic>>(result);            
-            var translationItems = jsonData[0];            
-            string translation = "";           
+            string result = httpClient.GetStringAsync(url).Result;
+            var jsonData = new JavaScriptSerializer().Deserialize<List<dynamic>>(result);
+            var translationItems = jsonData[0];
+            string translation = "";
             foreach (object item in translationItems)
-            {                
-                IEnumerable translationLineObject = item as IEnumerable;                
-                IEnumerator translationLineString = translationLineObject.GetEnumerator();              
-                translationLineString.MoveNext();                
+            {
+                IEnumerable translationLineObject = item as IEnumerable;
+                IEnumerator translationLineString = translationLineObject.GetEnumerator();
+                translationLineString.MoveNext();
                 translation += string.Format(" {0}", Convert.ToString(translationLineString.Current));
             }
-            if (translation.Length > 1) { translation = translation.Substring(1); };           
+            if (translation.Length > 1) { translation = translation.Substring(1); };
             return translation;
         }
 
@@ -46,5 +49,16 @@ namespace GoogleTranslate
             textBox2.Text = TranslateText(textBox1.Text);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string s = label1.Text;
+            label1.Text = label2.Text;
+            label2.Text = s;
 
+            //đổi ngôn ngữ dịch
+            string temp = input;
+            input = output;
+            output = temp;
+        }
+    }
 }

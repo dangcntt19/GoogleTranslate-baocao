@@ -60,5 +60,12 @@ namespace GoogleTranslate
             input = output;
             output = temp;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //vị trí bật form ở giữa
+            this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+                          (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
+        }
     }
 }

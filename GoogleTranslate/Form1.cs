@@ -22,7 +22,6 @@ namespace GoogleTranslate
 
         private string InputLanguage = "auto"; // tự động phát hiện ngôn ngữ
         private string OutputLanguage = "en";
-        private string[] ListLanguge = { "vi", "en", "fr" };
 
         public string TranslateText(string input)
         {
@@ -50,6 +49,9 @@ namespace GoogleTranslate
             // Đầu vào không rỗng
             if(textBox1.Text != "")
             {
+                InputLanguage = (new Languages()).GetKeyLanguages(comboBox2.SelectedItem.ToString());
+                OutputLanguage = (new Languages()).GetKeyLanguages(comboBox1.SelectedItem.ToString());
+
                 textBox2.Text = TranslateText(textBox1.Text);
             }
         }
@@ -57,25 +59,24 @@ namespace GoogleTranslate
         private void button2_Click(object sender, EventArgs e)
         {
             // chuyển đổi ngôn ngữ ra
-            if (OutputLanguage.Equals("en"))
+            if (!OutputLanguage.Equals(InputLanguage))
             {
-                OutputLanguage = "vi";
-            }
-            else
-            {
-                OutputLanguage = "en";
-            }
-            //đổi ngôn ngữ dịch (Label)
-            string temp = label1.Text;
-            label1.Text = label2.Text;
-            label2.Text = temp;
-            //dịch lại
-            if (textBox1.Text != "" && textBox2.Text != "")
-            {
-                string temp2 = textBox1.Text;
-                textBox1.Text = textBox2.Text;
-                textBox2.Text = temp2;
-            }
+                // hoán đổi key
+                string tmp = InputLanguage;
+                InputLanguage = OutputLanguage;
+                OutputLanguage = tmp;
+                //hoán đổi vị trí select trong combo box
+                int tmpIndex = comboBox1.SelectedIndex;
+                comboBox1.SelectedIndex = comboBox2.SelectedIndex;
+                comboBox2.SelectedIndex = tmpIndex;
+                //dịch lại ngôn ngữ mới
+                if (textBox1.Text != "" && textBox2.Text != "")
+                {
+                    string TempTranslate = textBox1.Text;
+                    textBox1.Text = textBox2.Text;
+                    textBox2.Text = TempTranslate;
+                }
+            }           
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -83,6 +84,21 @@ namespace GoogleTranslate
             //vị trí bật form ở giữa
             this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                           (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
+
+            //add ngôn ngữ vào combobox
+            string[] NameLanguages = (new Languages()).GetNameLanguages();
+            for(int i = 0; i < NameLanguages.Length; i++)
+            {
+                comboBox1.Items.Add(NameLanguages[i]);
+                comboBox2.Items.Add(NameLanguages[i]);
+            }
+
+            comboBox1.SelectedIndex = 22 ;
+            comboBox2.SelectedIndex = 0;
+            //không cho sửa chữa 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
     }
 }

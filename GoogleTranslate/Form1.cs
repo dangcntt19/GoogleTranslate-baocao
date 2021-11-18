@@ -20,8 +20,9 @@ namespace GoogleTranslate
             InitializeComponent();
         }
 
-        private string InputLanguage = "vi";
+        private string InputLanguage = "auto"; // tự động phát hiện ngôn ngữ
         private string OutputLanguage = "en";
+        private string[] ListLanguge = { "vi", "en", "fr" };
 
         public string TranslateText(string input)
         {
@@ -46,19 +47,35 @@ namespace GoogleTranslate
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox2.Text = TranslateText(textBox1.Text);
+            // Đầu vào không rỗng
+            if(textBox1.Text != "")
+            {
+                textBox2.Text = TranslateText(textBox1.Text);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string s = label1.Text;
+            // chuyển đổi ngôn ngữ ra
+            if (OutputLanguage.Equals("en"))
+            {
+                OutputLanguage = "vi";
+            }
+            else
+            {
+                OutputLanguage = "en";
+            }
+            //đổi ngôn ngữ dịch (Label)
+            string temp = label1.Text;
             label1.Text = label2.Text;
-            label2.Text = s;
-
-            //đổi ngôn ngữ dịch
-            string temp = InputLanguage;
-            InputLanguage = OutputLanguage;
-            OutputLanguage = temp;
+            label2.Text = temp;
+            //dịch lại
+            if (textBox1.Text != "" && textBox2.Text != "")
+            {
+                string temp2 = textBox1.Text;
+                textBox1.Text = textBox2.Text;
+                textBox2.Text = temp2;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -20,14 +20,14 @@ namespace GoogleTranslate
             InitializeComponent();
         }
 
-        private string input = "vi";
-        private string output = "en";
+        private string InputLanguage = "vi";
+        private string OutputLanguage = "en";
 
         public string TranslateText(string input)
         {
             string url = String.Format
             ("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
-             input, output, Uri.EscapeUriString(input));
+             InputLanguage, OutputLanguage, Uri.EscapeUriString(input));
             HttpClient httpClient = new HttpClient();
             string result = httpClient.GetStringAsync(url).Result;
             var jsonData = new JavaScriptSerializer().Deserialize<List<dynamic>>(result);
@@ -56,9 +56,9 @@ namespace GoogleTranslate
             label2.Text = s;
 
             //đổi ngôn ngữ dịch
-            string temp = input;
-            input = output;
-            output = temp;
+            string temp = InputLanguage;
+            InputLanguage = OutputLanguage;
+            OutputLanguage = temp;
         }
 
         private void Form1_Load(object sender, EventArgs e)

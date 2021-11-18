@@ -49,6 +49,7 @@ namespace GoogleTranslate
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(285, 278);
             this.textBox1.TabIndex = 0;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // textBox2
             // 
@@ -75,19 +76,19 @@ namespace GoogleTranslate
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(242, 19);
+            this.label3.Location = new System.Drawing.Point(243, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(335, 32);
+            this.label3.Size = new System.Drawing.Size(354, 36);
             this.label3.TabIndex = 6;
             this.label3.Text = "GOOGLE TRANSLATE ";
             // 
             // label4
             // 
             this.label4.Image = global::GoogleTranslate.Properties.Resources.tải_xống_removebg_preview2;
-            this.label4.Location = new System.Drawing.Point(328, 134);
+            this.label4.Location = new System.Drawing.Point(345, 143);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 127);
             this.label4.TabIndex = 7;

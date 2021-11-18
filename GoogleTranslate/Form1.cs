@@ -100,5 +100,13 @@ namespace GoogleTranslate
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputLanguage = (new Languages()).GetKeyLanguages(comboBox2.SelectedItem.ToString());
+            OutputLanguage = (new Languages()).GetKeyLanguages(comboBox1.SelectedItem.ToString());
+
+            textBox2.Text = TranslateText(textBox1.Text);
+        }
     }
 }

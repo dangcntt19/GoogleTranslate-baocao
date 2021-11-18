@@ -49,9 +49,6 @@ namespace GoogleTranslate
             // Đầu vào không rỗng
             if(textBox1.Text != "")
             {
-                InputLanguage = (new Languages()).GetKeyLanguages(comboBox2.SelectedItem.ToString());
-                OutputLanguage = (new Languages()).GetKeyLanguages(comboBox1.SelectedItem.ToString());
-
                 textBox2.Text = TranslateText(textBox1.Text);
             }
         }
@@ -67,8 +64,8 @@ namespace GoogleTranslate
                 OutputLanguage = tmp;
                 //hoán đổi vị trí select trong combo box
                 int tmpIndex = comboBox1.SelectedIndex;
-                comboBox1.SelectedIndex = comboBox2.SelectedIndex;
-                comboBox2.SelectedIndex = tmpIndex;
+                comboBox1.SelectedIndex = ((comboBox2.SelectedIndex - 1 ) < 0 ? 32 : comboBox2.SelectedIndex - 1 );
+                comboBox2.SelectedIndex = tmpIndex + 1;
                 //dịch lại ngôn ngữ mới
                 if (textBox1.Text != "" && textBox2.Text != "")
                 {
@@ -89,24 +86,31 @@ namespace GoogleTranslate
             string[] NameLanguages = (new Languages()).GetNameLanguages();
             for(int i = 0; i < NameLanguages.Length; i++)
             {
-                comboBox1.Items.Add(NameLanguages[i]);
+                if(i != 0)
+                    comboBox1.Items.Add(NameLanguages[i]);
                 comboBox2.Items.Add(NameLanguages[i]);
             }
 
-            comboBox1.SelectedIndex = 22 ;
+            comboBox1.SelectedIndex = 21 ;
             comboBox2.SelectedIndex = 0;
             //không cho sửa chữa 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            InputLanguage = (new Languages()).GetKeyLanguages(comboBox2.SelectedItem.ToString());
-            OutputLanguage = (new Languages()).GetKeyLanguages(comboBox1.SelectedItem.ToString());
-
             textBox2.Text = TranslateText(textBox1.Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OutputLanguage = (new Languages()).GetKeyLanguages(comboBox1.SelectedItem.ToString());
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InputLanguage = (new Languages()).GetKeyLanguages(comboBox2.SelectedItem.ToString());
         }
     }
 }

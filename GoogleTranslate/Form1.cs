@@ -21,7 +21,7 @@ namespace GoogleTranslate
         }
        
 
-        private string InputLanguage = "auto"; // tự động phát hiện ngôn ngữ
+        private string InputLanguage = "auto"; 
         private string OutputLanguage = "en";
 
         public string TranslateText(string input)
@@ -123,19 +123,9 @@ namespace GoogleTranslate
         {
             DateTime dt = DateTime.Now.Add(new TimeSpan());
 
-            label1.Text = String.Format("{0:hh:mm:ss tt}", dt);
+            label1.Text = String.Format("{0:dd/MM/yyyy}", dt) + "\n"
+                + String.Format("{0:hh:mm:ss tt}", dt);
         }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            DateTime dt = DateTime.Now.Add(new TimeSpan());
-
-           label2.Text = String.Format("{0:dd/MM/yyyy}", dt);
-
-       
-
-
-    }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -144,9 +134,7 @@ namespace GoogleTranslate
             if (dt == DialogResult.Yes)
 
             {
-
                 Application.Exit();
-
             }
         }
     }

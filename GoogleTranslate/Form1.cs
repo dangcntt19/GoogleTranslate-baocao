@@ -136,5 +136,18 @@ namespace GoogleTranslate
 
 
     }
-}
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult dt = MessageBox.Show("Bạn muốn đóng chương trình", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dt == DialogResult.Yes)
+
+            {
+
+                Application.Exit();
+
+            }
+        }
+    }
 }

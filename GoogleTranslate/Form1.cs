@@ -19,6 +19,7 @@ namespace GoogleTranslate
         {
             InitializeComponent();
         }
+       
 
         private string InputLanguage = "auto"; // tự động phát hiện ngôn ngữ
         private string OutputLanguage = "en";
@@ -112,5 +113,28 @@ namespace GoogleTranslate
         {
             InputLanguage = (new Languages()).GetKeyLanguages(comboBox2.SelectedItem.ToString());
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now.Add(new TimeSpan());
+
+            label1.Text = String.Format("{0:hh:mm:ss tt}", dt);
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now.Add(new TimeSpan());
+
+           label2.Text = String.Format("{0:dd/MM/yyyy}", dt);
+
+       
+
+
     }
+}
 }
